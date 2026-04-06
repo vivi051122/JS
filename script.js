@@ -1,3 +1,5 @@
+function pullDown(){}
+
 window.alert("ブラウザオブジェクトの取得に成功！")
 
 function getElement(){
@@ -54,6 +56,8 @@ window.addEventListener('click',function(){
 
 const pullDownButton = document.getElementById("lists")
 const pullDownParents = document.getElementById("pull-down")
+const pullDownChild = document.querySelectorAll(".pull-down-list")
+const currentList = document.getElementById("current-list")
 
 pullDownButton.addEventListener('click',function(){
     if(pullDownParents.getAttribute("style")=="display:block;"){
@@ -64,3 +68,13 @@ pullDownButton.addEventListener('click',function(){
         console.log("表示")
     }
 })
+
+pullDownChild.forEach(function(list){
+    list.addEventListener('click',function(){
+        const value = list.innerHTML
+        currentList.innerHTML = value
+        console.log(value)
+    })
+})
+
+window.addEventListener('load',pullDown)
